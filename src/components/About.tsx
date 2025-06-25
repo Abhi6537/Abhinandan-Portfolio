@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Code2, Award, Trophy, Camera, Users, Gamepad2 } from 'lucide-react';
 
@@ -9,18 +8,16 @@ const About = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 } // lowered for earlier trigger on mobile
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
+    const current = sectionRef.current;
+    if (current) observer.observe(current);
+    return () => {
+      if (current) observer.unobserve(current);
+    };
   }, []);
 
   const achievements = [
@@ -53,17 +50,21 @@ const About = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="about" className="py-24 bg-gradient-to-br from-muted/20 via-background to-primary/5 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+    <section
+      ref={sectionRef}
+      id="about"
+      className="py-24 bg-gradient-to-br from-muted/20 via-background to-primary/10 relative overflow-hidden"
+    >
+      {/* Background blur with toned-down blur size */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-64 h-64 bg-primary/10 rounded-full blur-2xl md:blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-72 h-72 bg-accent/10 rounded-full blur-2xl md:blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className={`text-center mb-20 transition-all duration-1000 ${
+          <div className={`text-center mb-20 transition-all duration-1000 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             <h2 className="text-5xl md:text-6xl font-bold mb-6 font-playfair">
@@ -72,62 +73,50 @@ const About = () => {
             <div className="w-32 h-1 bg-primary mx-auto rounded-full mb-8"></div>
           </div>
 
-          {/* Main content grid */}
+          {/* Main grid */}
           <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
-            {/* Left side - Personal info */}
-            <div className={`space-y-8 transition-all duration-1000 delay-300 ${
+            {/* Left - Info */}
+            <div className={`space-y-8 transition-all duration-1000 ease-out delay-200 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}>
               <div className="space-y-6 text-lg text-muted-foreground font-inter leading-relaxed">
-                <p className="text-2xl font-semibold text-foreground mb-4">
+                <p className="text-2xl font-semibold text-foreground">
                   Hi, I'm Abhinandan Ghosh — a first-year B.Tech IT student at{' '}
-                  <span className="text-primary">JIS College of Engineering</span> with a passion for frontend and full-stack development.
+                  <span className="text-primary">JIS College of Engineering</span> passionate about frontend and full-stack development.
                 </p>
-
                 <p>
-                  I was the <span className="text-accent font-semibold">1st runner-up at the JISTECH App E-Teaser</span> for my project 'Mess Sathi' — 
+                  I was the <span className="text-accent font-semibold">1st runner-up at JISTECH App E-Teaser</span> for my project 'Mess Sathi' — 
                   a web platform that connects students with local mess services.
                 </p>
-
                 <p>
-                  I enjoy building beautiful, fast, and user-friendly apps using React, Firebase, Tailwind CSS, and Node.js. 
-                  I'm currently learning Android development with Kotlin and improving my backend skills with Express.
+                  I enjoy building fast, user-friendly apps with React, Firebase, Tailwind CSS, and Node.js. Currently, I'm exploring Android development using Kotlin and backend with Express.
                 </p>
-
-                <p>
-                  Outside of tech, I enjoy photography 📸, playing cricket 🏏, and watching movies 🎬.
-                </p>
-
-                <p className="text-primary font-semibold text-xl">
-                  Let's build something awesome together! 🚀
-                </p>
+                <p>Outside of tech, I enjoy photography 📸, playing cricket 🏏, and watching movies 🎬.</p>
+                <p className="text-primary font-semibold text-xl">Let's build something awesome together! 🚀</p>
               </div>
 
               {/* Achievements */}
               <div className="grid grid-cols-2 gap-6">
-                {achievements.map((achievement, index) => (
+                {achievements.map((a, i) => (
                   <div
-                    key={achievement.label}
-                    className={`text-center p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-all duration-500 ${
+                    key={a.label}
+                    className={`text-center p-6 rounded-2xl bg-card/50 backdrop-blur-md border border-border/50 hover:border-primary/50 transition-all duration-700 ${
                       isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
                     }`}
-                    style={{ animationDelay: `${(index + 1) * 200}ms` }}
+                    style={{ transitionDelay: `${(i + 1) * 150}ms` }}
                   >
-                    <div className="text-3xl font-bold text-primary mb-2 font-playfair">{achievement.number}</div>
-                    <div className="text-sm text-muted-foreground font-inter">{achievement.label}</div>
+                    <div className="text-3xl font-bold text-primary mb-2 font-playfair">{a.number}</div>
+                    <div className="text-sm text-muted-foreground font-inter">{a.label}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Right side - Currently Learning */}
-            <div className={`space-y-8 transition-all duration-1000 delay-500 ${
+            {/* Right - Learning Progress */}
+            <div className={`space-y-8 transition-all duration-1000 ease-out delay-300 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
             }`}>
-              <h3 className="text-3xl font-bold mb-6 text-primary font-playfair">
-                Currently Learning
-              </h3>
-              
+              <h3 className="text-3xl font-bold mb-6 text-primary font-playfair">Currently Learning</h3>
               <div className="space-y-6">
                 {currentlyLearning.map((skill, index) => (
                   <div key={skill.name} className="space-y-3">
@@ -137,10 +126,10 @@ const About = () => {
                     </div>
                     <div className="w-full bg-muted rounded-full h-3 overflow-hidden">
                       <div
-                        className="h-full bg-primary rounded-full transition-all duration-2000 ease-out"
-                        style={{ 
+                        className="h-full bg-primary rounded-full transition-all duration-1000 ease-in-out"
+                        style={{
                           width: isVisible ? `${skill.progress}%` : '0%',
-                          transitionDelay: `${index * 200 + 800}ms`
+                          transitionDelay: `${index * 150 + 600}ms`,
                         }}
                       ></div>
                     </div>
@@ -148,7 +137,7 @@ const About = () => {
                 ))}
               </div>
 
-              {/* Personal Interests */}
+              {/* Interests */}
               <div className="mt-12">
                 <h4 className="text-xl font-semibold mb-6 font-playfair">When I'm not coding...</h4>
                 <div className="grid grid-cols-3 gap-4">
@@ -169,14 +158,13 @@ const About = () => {
             </div>
           </div>
 
-          {/* Project Highlights */}
-          <div className={`transition-all duration-1000 delay-700 ${
+          {/* Projects */}
+          <div className={`transition-all duration-1000 ease-out delay-500 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             <h3 className="text-3xl font-bold text-center mb-12 font-playfair">
               Project <span className="text-primary">Highlights</span>
             </h3>
-            
             <div className="grid md:grid-cols-2 gap-8">
               {projects.map((project, index) => (
                 <div
