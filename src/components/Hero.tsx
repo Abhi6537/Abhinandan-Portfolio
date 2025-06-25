@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { chevron-down } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const Hero = () => {
   const [currentText, setCurrentText] = useState(0);
@@ -75,7 +74,7 @@ const Hero = () => {
           onClick={scrollToAbout}
           className="p-2 rounded-full border border-border hover:bg-accent transition-colors"
         >
-          <chevron-down className="w-6 h-6" />
+          <ChevronDown className="w-6 h-6" />
         </button>
       </div>
 

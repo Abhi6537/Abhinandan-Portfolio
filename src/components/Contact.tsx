@@ -1,6 +1,5 @@
-
 import React, { useEffect, useRef, useState } from 'react';
-import { message-square } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -200,7 +199,7 @@ const Contact = () => {
                 type="submit"
                 className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
               >
-                <message-square className="w-5 h-5" />
+                <MessageSquare className="w-5 h-5" />
                 <span>Send Message</span>
               </button>
             </form>
