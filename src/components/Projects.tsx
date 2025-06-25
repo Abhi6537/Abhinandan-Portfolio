@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, Youtube } from 'lucide-react';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -10,43 +10,28 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-commerce Dashboard',
-      description: 'A modern admin dashboard for e-commerce platforms with real-time analytics and inventory management.',
-      longDescription: 'Built with React, TypeScript, and Tailwind CSS, this dashboard provides comprehensive analytics, user management, and real-time data visualization. Features include drag-and-drop functionality, advanced filtering, and responsive design.',
-      tech: ['React', 'TypeScript', 'Tailwind CSS', 'Chart.js'],
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
-      github: '#',
-      demo: '#'
+      title: 'Mess Sathi',
+      description: 'A web app designed to connect students with local mess services, featuring mess listings, room type filters, and owner dashboards.',
+      longDescription: 'Mess Sathi is a comprehensive web platform that bridges the gap between students and local mess services. Features include detailed mess listings, advanced filtering by room type and location, dedicated owner dashboards for mess management, and a user-friendly interface built with React and Tailwind CSS. This project earned me the 1st runner-up position at the JISTECH App E-Teaser competition.',
+      tech: ['React', 'Tailwind CSS', 'Firebase', 'JavaScript', 'Figma'],
+      image: '/lovable-uploads/8bf3e71a-0d47-4551-8268-2e0b93ead3d3.png',
+      github: {
+        frontend: 'https://github.com/Abhi6537/MessSathi-Frontend.git',
+        backend: 'https://github.com/Abhi6537/MessSathi-Backend.git'
+      },
+      demo: null
     },
     {
       id: 2,
-      title: 'AI-Powered Chat App',
-      description: 'Real-time messaging application with AI-powered smart replies and sentiment analysis.',
-      longDescription: 'A cutting-edge chat application featuring AI integration for smart replies, sentiment analysis, and real-time translation. Built with modern web technologies for optimal performance.',
-      tech: ['Next.js', 'Socket.io', 'OpenAI API', 'MongoDB'],
-      image: 'https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=800&h=600&fit=crop',
-      github: '#',
-      demo: '#'
-    },
-    {
-      id: 3,
-      title: 'Design System Library',
-      description: 'Comprehensive design system with reusable components and detailed documentation.',
-      longDescription: 'A complete design system library featuring 50+ components, detailed documentation, and interactive examples. Includes dark/light themes, accessibility features, and TypeScript support.',
-      tech: ['Storybook', 'React', 'Figma', 'TypeScript'],
-      image: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=600&fit=crop',
-      github: '#',
-      demo: '#'
-    },
-    {
-      id: 4,
-      title: 'Portfolio Website',
-      description: 'Responsive portfolio website with smooth animations and modern design principles.',
-      longDescription: 'A fully responsive portfolio website showcasing modern design principles, smooth animations, and optimal performance. Features include dark/light mode, contact forms, and project galleries.',
-      tech: ['React', 'Framer Motion', 'Tailwind CSS', 'Vite'],
-      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop',
-      github: '#',
-      demo: '#'
+      title: 'GharKaKaam',
+      description: 'A service-based platform connecting households with verified workers like plumbers, electricians, and cleaners with chatbot support.',
+      longDescription: 'GharKaKaam is a comprehensive home service platform that connects households with verified professionals including plumbers, electricians, cleaners, and more. The platform features an intelligent chatbot powered by Dialogflow for customer support, real-time booking system, service provider verification, and a seamless user experience. Built with a full-stack approach using React, Node.js, and MongoDB.',
+      tech: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS', 'Dialogflow', 'Figma'],
+      image: '/lovable-uploads/1f25ade4-641a-428d-ab1a-7a31c7ad9146.png',
+      github: {
+        main: 'https://github.com/Abhi6537/GharKaKaam.git'
+      },
+      demo: 'https://youtu.be/28vppcNVrNU'
     }
   ];
 
@@ -73,14 +58,14 @@ const Projects = () => {
         <div className={`text-center mb-16 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Featured Projects</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-playfair">My Projects</h2>
           <div className="w-24 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            A showcase of my recent work, demonstrating expertise in modern web technologies and design.
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-inter">
+            Real projects I've built during my journey as a developer, showcasing my skills in modern web technologies.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {projects.map((project, index) => (
             <div
               key={project.id}
@@ -98,29 +83,22 @@ const Projects = () => {
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="flex space-x-4">
-                      <button className="p-3 bg-white rounded-full hover:scale-110 transition-transform">
-                        <Github className="w-5 h-5 text-black" />
-                      </button>
-                      <button className="p-3 bg-white rounded-full hover:scale-110 transition-transform">
-                        <ExternalLink className="w-5 h-5 text-black" />
-                      </button>
-                    </div>
+                    <div className="text-white font-semibold">Click to view details</div>
                   </div>
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors font-playfair">
                     {project.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4 line-clamp-2">
+                  <p className="text-muted-foreground mb-4 line-clamp-2 font-inter">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-muted text-sm rounded-full"
+                        className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full font-medium font-inter"
                       >
                         {tech}
                       </span>
@@ -163,8 +141,8 @@ const Projects = () => {
                     </div>
                     
                     <div className="p-8">
-                      <h3 className="text-3xl font-bold mb-4">{project.title}</h3>
-                      <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
+                      <h3 className="text-3xl font-bold mb-4 font-playfair">{project.title}</h3>
+                      <p className="text-muted-foreground text-lg mb-6 leading-relaxed font-inter">
                         {project.longDescription}
                       </p>
                       
@@ -172,28 +150,59 @@ const Projects = () => {
                         {project.tech.map((tech) => (
                           <span
                             key={tech}
-                            className="px-4 py-2 bg-primary/10 text-primary rounded-full font-medium"
+                            className="px-4 py-2 bg-primary/10 text-primary rounded-full font-medium font-inter"
                           >
                             {tech}
                           </span>
                         ))}
                       </div>
                       
-                      <div className="flex space-x-4">
-                        <a
-                          href={project.github}
-                          className="flex items-center space-x-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:scale-105 transition-transform"
-                        >
-                          <Github className="w-5 h-5" />
-                          <span>View Code</span>
-                        </a>
-                        <a
-                          href={project.demo}
-                          className="flex items-center space-x-2 px-6 py-3 border border-border rounded-lg hover:bg-accent transition-colors"
-                        >
-                          <ExternalLink className="w-5 h-5" />
-                          <span>Live Demo</span>
-                        </a>
+                      <div className="flex flex-wrap gap-4">
+                        {project.id === 1 ? (
+                          <>
+                            <a
+                              href={project.github.frontend}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center space-x-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:scale-105 transition-transform font-inter"
+                            >
+                              <Github className="w-5 h-5" />
+                              <span>Frontend Code</span>
+                            </a>
+                            <a
+                              href={project.github.backend}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center space-x-2 px-6 py-3 border border-border rounded-lg hover:bg-accent transition-colors font-inter"
+                            >
+                              <Github className="w-5 h-5" />
+                              <span>Backend Code</span>
+                            </a>
+                          </>
+                        ) : (
+                          <>
+                            <a
+                              href={project.github.main}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center space-x-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:scale-105 transition-transform font-inter"
+                            >
+                              <Github className="w-5 h-5" />
+                              <span>View Code</span>
+                            </a>
+                            {project.demo && (
+                              <a
+                                href={project.demo}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center space-x-2 px-6 py-3 border border-border rounded-lg hover:bg-accent transition-colors font-inter"
+                              >
+                                <Youtube className="w-5 h-5" />
+                                <span>Live Demo</span>
+                              </a>
+                            )}
+                          </>
+                        )}
                       </div>
                     </div>
                   </>
