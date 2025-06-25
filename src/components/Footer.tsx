@@ -3,10 +3,6 @@ import React from 'react';
 import { Github, Linkedin, Mail, Instagram, Twitter } from 'lucide-react';
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const socialLinks = [
     {
       name: 'GitHub',
@@ -49,7 +45,7 @@ const Footer = () => {
           <div className="space-y-6">
             <h3 className="text-3xl font-bold font-playfair">Abhinandan Ghosh</h3>
             <p className="text-muted-foreground leading-relaxed font-inter">
-              Frontend Developer & UI/UX Designer passionate about creating 
+              Frontend Developer passionate about creating 
               beautiful and functional digital experiences that make a difference.
             </p>
             <div className="flex space-x-4">
@@ -110,24 +106,23 @@ const Footer = () => {
                 <span className="text-sm group-hover:animate-bounce-subtle">📱</span>
                 <span className="font-inter">+91 7063488278</span>
               </a>
-              <div className="flex items-center gap-3 text-muted-foreground">
-                <span className="text-sm">📍</span>
-                <span className="font-inter">Bangalore, India</span>
-              </div>
+              <a 
+                href="https://maps.app.goo.gl/sSHe6UQkKjD2Dx6f6?g_st=com.google.maps.preview.copy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 group"
+              >
+                <span className="text-sm group-hover:animate-bounce-subtle">📍</span>
+                <span className="font-inter">Kolkata, India</span>
+              </a>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-muted-foreground font-inter">
+        <div className="border-t border-border mt-12 pt-8 flex flex-col md:flex-row justify-center items-center">
+          <p className="text-muted-foreground font-inter text-center">
             © 2025 Abhinandan Ghosh. All rights reserved.
           </p>
-          <button
-            onClick={scrollToTop}
-            className="mt-4 md:mt-0 px-6 py-3 bg-primary/10 text-primary rounded-xl hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105 font-inter"
-          >
-            Back to Top ↑
-          </button>
         </div>
       </div>
     </footer>
