@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
-import { github, projector } from 'lucide-react';
+import { Github, ExternalLink } from 'lucide-react';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -100,10 +100,10 @@ const Projects = () => {
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="flex space-x-4">
                       <button className="p-3 bg-white rounded-full hover:scale-110 transition-transform">
-                        <github className="w-5 h-5 text-black" />
+                        <Github className="w-5 h-5 text-black" />
                       </button>
                       <button className="p-3 bg-white rounded-full hover:scale-110 transition-transform">
-                        <projector className="w-5 h-5 text-black" />
+                        <ExternalLink className="w-5 h-5 text-black" />
                       </button>
                     </div>
                   </div>
@@ -184,14 +184,14 @@ const Projects = () => {
                           href={project.github}
                           className="flex items-center space-x-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:scale-105 transition-transform"
                         >
-                          <github className="w-5 h-5" />
+                          <Github className="w-5 h-5" />
                           <span>View Code</span>
                         </a>
                         <a
                           href={project.demo}
                           className="flex items-center space-x-2 px-6 py-3 border border-border rounded-lg hover:bg-accent transition-colors"
                         >
-                          <projector className="w-5 h-5" />
+                          <ExternalLink className="w-5 h-5" />
                           <span>Live Demo</span>
                         </a>
                       </div>

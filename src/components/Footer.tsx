@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { github, linkedin, contact } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -59,19 +59,19 @@ const Footer = () => {
                 href="#"
                 className="p-3 rounded-lg bg-muted hover:bg-accent transition-colors hover:scale-110 transform duration-200"
               >
-                <github className="w-5 h-5" />
+                <Github className="w-5 h-5" />
               </a>
               <a
                 href="#"
                 className="p-3 rounded-lg bg-muted hover:bg-accent transition-colors hover:scale-110 transform duration-200"
               >
-                <linkedin className="w-5 h-5" />
+                <Linkedin className="w-5 h-5" />
               </a>
               <a
                 href="#"
                 className="p-3 rounded-lg bg-muted hover:bg-accent transition-colors hover:scale-110 transform duration-200"
               >
-                <contact className="w-5 h-5" />
+                <Mail className="w-5 h-5" />
               </a>
             </div>
           </div>
