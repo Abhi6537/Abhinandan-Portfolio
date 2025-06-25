@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // Replace with your actual repo name (case-sensitive)
-const repoName = "Abhinandan-protfolio"; // 👈 Change this if needed
+const repoName = "Abhinandan-Protfolio"; // 👈 Change this if needed
 
 export default defineConfig(({ mode }) => ({
   base: `/${repoName}/`, // 👈 REQUIRED for GitHub Pages
