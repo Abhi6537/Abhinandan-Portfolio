@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,7 +18,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 262 83% 58%;
+    --primary: 217 91% 60%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -25,17 +27,17 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 262 83% 58%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 142 76% 36%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 262 83% 58%;
+    --ring: 217 91% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -57,7 +59,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 262 83% 68%;
+    --primary: 217 91% 70%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -66,7 +68,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 173 58% 39%;
+    --accent: 142 70% 45%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -74,7 +76,7 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 262 83% 68%;
+    --ring: 217 91% 70%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -93,10 +95,19 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
   }
 }
 
-/* Custom gradient text animation */
+/* Professional gradient text animation */
 @keyframes gradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -104,38 +115,61 @@
 }
 
 .gradient-text {
-  background: linear-gradient(-45deg, #8b5cf6, #06b6d4, #10b981, #f59e0b);
+  background: linear-gradient(-45deg, #3b82f6, #10b981, #8b5cf6, #f59e0b);
   background-size: 400% 400%;
-  animation: gradient 3s ease infinite;
+  animation: gradient 4s ease infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Glowing border animation */
+/* Professional glowing border animation */
 @keyframes glow {
-  0% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
-  50% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.6), 0 0 40px rgba(6, 182, 212, 0.3); }
-  100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+  0% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.6), 0 0 40px rgba(16, 185, 129, 0.3); }
+  100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
 }
 
 .glow-border {
-  animation: glow 2s ease-in-out infinite;
+  animation: glow 3s ease-in-out infinite;
 }
 
-/* Typing animation */
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+/* Professional floating background elements */
+@keyframes float-professional {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(1deg); }
+  50% { transform: translateY(-20px) rotate(0deg); }
+  75% { transform: translateY(-10px) rotate(-1deg); }
 }
 
-@keyframes blink {
-  50% { border-color: transparent; }
+.float-professional {
+  animation: float-professional 8s ease-in-out infinite;
 }
 
-.typing-animation {
-  border-right: 2px solid;
-  white-space: nowrap;
-  overflow: hidden;
-  animation: typing 3s steps(30, end), blink 1s step-end infinite;
+@keyframes drift {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(10px, -10px) rotate(1deg); }
+  50% { transform: translate(-5px, -20px) rotate(0deg); }
+  75% { transform: translate(-10px, -10px) rotate(-1deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.drift-animation {
+  animation: drift 12s ease-in-out infinite;
+}
+
+/* Professional backdrop blur effects */
+.backdrop-blur-professional {
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+}
+
+/* Professional pulse animation */
+@keyframes pulse-professional {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.05); }
+}
+
+.pulse-professional {
+  animation: pulse-professional 4s ease-in-out infinite;
 }
