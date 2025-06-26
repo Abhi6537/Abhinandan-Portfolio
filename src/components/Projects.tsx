@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Github, ExternalLink, Youtube } from 'lucide-react';
 
@@ -14,7 +13,10 @@ const Projects = () => {
       description: 'A web app designed to connect students with local mess services, featuring mess listings, room type filters, and owner dashboards.',
       longDescription: 'Mess Sathi is a comprehensive web platform that bridges the gap between students and local mess services. Features include detailed mess listings, advanced filtering by room type and location, dedicated owner dashboards for mess management, and a user-friendly interface built with React and Tailwind CSS. This project earned me the 1st runner-up position at the JISTECH App E-Teaser competition.',
       tech: ['React', 'Tailwind CSS', 'Firebase', 'JavaScript', 'Figma'],
-      image: '/lovable-uploads/8bf3e71a-0d47-4551-8268-2e0b93ead3d3.png',
+      // Updated image path - place your image in public/images/ folder
+      image: process.env.NODE_ENV === 'production' 
+        ? '/Abhinandan-Portfolio/images/mess-sathi.png'
+        : '/images/mess-sathi.png',
       github: {
         frontend: 'https://github.com/Abhi6537/MessSathi-Frontend.git',
         backend: 'https://github.com/Abhi6537/MessSathi-Backend.git'
@@ -27,7 +29,10 @@ const Projects = () => {
       description: 'A service-based platform connecting households with verified workers like plumbers, electricians, and cleaners with chatbot support.',
       longDescription: 'GharKaKaam is a comprehensive home service platform that connects households with verified professionals including plumbers, electricians, cleaners, and more. The platform features an intelligent chatbot powered by Dialogflow for customer support, real-time booking system, service provider verification, and a seamless user experience. Built with a full-stack approach using React, Node.js, and MongoDB.',
       tech: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS', 'Dialogflow', 'Figma'],
-      image: '/lovable-uploads/1f25ade4-641a-428d-ab1a-7a31c7ad9146.png',
+      // Updated image path - place your image in public/images/ folder
+      image: process.env.NODE_ENV === 'production' 
+        ? '/Abhinandan-Portfolio/images/ghar-ka-kaam.png'
+        : '/images/ghar-ka-kaam.png',
       github: {
         main: 'https://github.com/Abhi6537/GharKaKaam.git'
       },
@@ -81,6 +86,10 @@ const Projects = () => {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    onError={(e) => {
+                      // Fallback to a placeholder if image fails to load
+                      e.currentTarget.src = 'https://via.placeholder.com/400x200/374151/f3f4f6?text=' + encodeURIComponent(project.title);
+                    }}
                   />
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="text-white font-semibold">Click to view details</div>
@@ -131,6 +140,10 @@ const Projects = () => {
                         src={project.image}
                         alt={project.title}
                         className="w-full h-64 object-cover"
+                        onError={(e) => {
+                          // Fallback to a placeholder if image fails to load
+                          e.currentTarget.src = 'https://via.placeholder.com/800x256/374151/f3f4f6?text=' + encodeURIComponent(project.title);
+                        }}
                       />
                       <button
                         onClick={() => setSelectedProject(null)}
