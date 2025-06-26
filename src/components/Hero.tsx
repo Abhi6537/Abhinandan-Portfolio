@@ -181,7 +181,7 @@ const Hero = () => {
 
             <div className="overflow-hidden mb-10">
               <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up font-kalam leading-relaxed" style={{ animationDelay: '0.6s' }}>
-                First-year B.Tech IT student at JIS College of Engineering, passionate about creating innovative web solutions and user experiences.
+                Second-year B.Tech IT student at JIS College of Engineering, passionate about creating innovative web solutions and user experiences.
               </p>
             </div>
 
