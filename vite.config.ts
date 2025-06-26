@@ -4,8 +4,8 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  // 👇 Add this line (dynamic base path)
-  base: mode === "production" ? "/Abhinandan-Portfolio/" : "/",
+  // Set base path for GitHub Pages
+  base: process.env.NODE_ENV === "production" ? "/Abhinandan-Portfolio/" : "/",
 
   server: {
     host: "::",
@@ -20,6 +20,18 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+    },
+  },
+
+  // Add build configuration for better debugging and compatibility
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: true, // Enable source maps for debugging
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
     },
   },
 }));
