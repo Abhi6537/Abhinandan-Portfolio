@@ -204,12 +204,13 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-subtle">
+        {/* Fixed scroll down arrow positioning */}
+        <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-subtle">
           <button
             onClick={scrollToAbout}
-            className="group p-3 rounded-full border-2 border-primary/30 hover:border-primary hover:bg-primary/10 transition-all duration-300 backdrop-blur-sm hover:scale-110 hover:shadow-lg"
+            className="group p-2 sm:p-3 rounded-full border-2 border-primary/30 hover:border-primary hover:bg-primary/10 transition-all duration-300 backdrop-blur-sm hover:scale-110 hover:shadow-lg"
           >
-            <ChevronDown className="w-5 h-5 text-primary group-hover:animate-bounce transition-transform group-hover:scale-110" />
+            <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-primary group-hover:animate-bounce transition-transform group-hover:scale-110" />
           </button>
         </div>
       </section>
