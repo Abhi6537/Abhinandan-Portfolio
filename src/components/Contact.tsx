@@ -1,15 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { MessageSquare, Phone, MapPin, Mail } from 'lucide-react';
+import { MessageSquare, Phone, MapPin, Mail, Briefcase, MessageCircle } from 'lucide-react';
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-  const [errors, setErrors] = useState<Record<string, string>>({});
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -29,50 +22,22 @@ const Contact = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Simple validation
-    const newErrors: Record<string, string> = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.email.trim()) newErrors.email = 'Email is required';
-    if (!formData.message.trim()) newErrors.message = 'Message is required';
-    
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
-
-    // Create proper mailto link
-    const subject = formData.subject || 'Contact from Portfolio Website';
+  const handleHireMe = () => {
+    const subject = 'Hiring Inquiry - Frontend Developer Position';
     const body = `Hi Abhinandan,
 
-Name: ${formData.name}
-Email: ${formData.email}
+I'm interested in discussing a frontend developer position with you. I came across your portfolio and would like to explore potential opportunities.
 
-Message:
-${formData.message}
+Looking forward to hearing from you.
 
-Best regards,
-${formData.name}`;
+Best regards`;
 
     const mailtoLink = `mailto:ghoshabhinandan290@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    // Open email client
     window.open(mailtoLink, '_self');
-    
-    // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
+  };
+
+  const handleLetsTalk = () => {
+    window.open('https://www.linkedin.com/in/abhinandan-ghosh-2b4a60320', '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -153,82 +118,46 @@ ${formData.name}`;
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* CTA Section */}
           <div className={`transition-all duration-1000 delay-500 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
           }`}>
-            <div className="bg-card/30 backdrop-blur-sm rounded-3xl p-4 sm:p-8 border border-border/50">
-              <h3 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 font-playfair">Send a Message</h3>
+            <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden border border-gray-700/50">
+              {/* Background decoration */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-accent/10 rounded-full blur-2xl"></div>
               
-              <div className="space-y-4 sm:space-y-6">
-                <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-                  <div className="relative">
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className={`w-full px-4 sm:px-6 py-3 sm:py-4 border rounded-2xl bg-background/50 backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 font-inter text-sm sm:text-base ${
-                        errors.name ? 'border-destructive' : 'border-border focus:border-primary'
-                      }`}
-                      placeholder="Your Name"
-                    />
-                    {errors.name && (
-                      <p className="text-destructive text-xs sm:text-sm mt-2 animate-fade-in font-inter">{errors.name}</p>
-                    )}
-                  </div>
-
-                  <div className="relative">
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className={`w-full px-4 sm:px-6 py-3 sm:py-4 border rounded-2xl bg-background/50 backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 font-inter text-sm sm:text-base ${
-                        errors.email ? 'border-destructive' : 'border-border focus:border-primary'
-                      }`}
-                      placeholder="Your Email"
-                    />
-                    {errors.email && (
-                      <p className="text-destructive text-xs sm:text-sm mt-2 animate-fade-in font-inter">{errors.email}</p>
-                    )}
-                  </div>
+              <div className="relative z-10 text-center">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 font-playfair">
+                  💼 Looking for a Frontend Developer?
+                </h3>
+                
+                <p className="text-gray-300 text-base sm:text-lg lg:text-xl leading-relaxed mb-8 sm:mb-10 max-w-md mx-auto font-inter">
+                  Ready to bring your ideas to life with modern, responsive web solutions? 
+                  Let's discuss how I can help your project succeed.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+                  <button
+                    onClick={handleHireMe}
+                    className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl min-w-[160px] font-inter"
+                  >
+                    <Briefcase className="w-5 h-5" />
+                    <span>📧 Hire Me</span>
+                  </button>
+                  
+                  <button
+                    onClick={handleLetsTalk}
+                    className="w-full sm:w-auto bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center space-x-3 min-w-[160px] font-inter"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    <span>💬 Let's Talk</span>
+                  </button>
                 </div>
-
-                <div className="relative">
-                  <input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className="w-full px-4 sm:px-6 py-3 sm:py-4 border border-border rounded-2xl bg-background/50 backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary font-inter text-sm sm:text-base"
-                    placeholder="Subject (Optional)"
-                  />
-                </div>
-
-                <div className="relative">
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={5}
-                    className={`w-full px-4 sm:px-6 py-3 sm:py-4 border rounded-2xl bg-background/50 backdrop-blur-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 resize-none font-inter text-sm sm:text-base ${
-                      errors.message ? 'border-destructive' : 'border-border focus:border-primary'
-                    }`}
-                    placeholder="Your Message"
-                  />
-                  {errors.message && (
-                    <p className="text-destructive text-xs sm:text-sm mt-2 animate-fade-in font-inter">{errors.message}</p>
-                  )}
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-primary text-primary-foreground py-3 sm:py-4 rounded-2xl font-semibold hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl font-inter text-base sm:text-lg"
-                >
-                  <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5" />
-                  <span>Send Message</span>
-                </button>
+                
+                <p className="text-gray-400 text-xs sm:text-sm mt-6 font-inter">
+                  Available for freelance projects and full-time opportunities
+                </p>
               </div>
             </div>
           </div>
