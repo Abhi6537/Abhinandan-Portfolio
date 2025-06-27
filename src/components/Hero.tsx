@@ -205,7 +205,7 @@ const Hero = () => {
         </div>
 
         {/* Fixed scroll down arrow positioning */}
-        <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 animate-bounce-subtle flex justify-center w-full">
+        <div className="absolute bottom-6 sm:bottom-8 w-full flex justify-center animate-bounce-subtle">
           <button
             onClick={scrollToAbout}
             className="group p-2 sm:p-3 rounded-full border-2 border-primary/30 hover:border-primary hover:bg-primary/10 transition-all duration-300 backdrop-blur-sm hover:scale-110 hover:shadow-lg"
