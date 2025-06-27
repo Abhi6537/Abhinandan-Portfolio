@@ -22,7 +22,7 @@ const About = () => {
 
   const achievements = [
     { number: '1st', label: 'Runner-up JISTECH' },
-    { number: '2+', label: 'Live Projects' },
+    { number: '2', label: 'Live Projects' },
     { number: 'B.Tech', label: 'IT Student' },
     { number: '100%', label: 'Passion Driven' }
   ];
@@ -92,7 +92,7 @@ const About = () => {
                   I enjoy building fast, user-friendly apps with React, Firebase, Tailwind CSS, and Node.js. Currently, I'm exploring Android development using Kotlin and backend with Express.
                 </p>
                 <p>Outside of tech, I enjoy photography 📸, playing cricket 🏏, and watching movies 🎬.</p>
-                <p className="text-primary font-semibold text-xl">Let's build something awesome together! 🚀</p>
+                <p className="text-primary font-semibold text-xl">Let's build something awesome together! </p>
               </div>
 
               {/* Achievements */}
